@@ -25,6 +25,7 @@ mongoose
   .then(() => console.log("Connected to database"))
   .catch((err: Error) => console.log("Not Connected to database", err));
 
+// get request
 app.get("/garage", (req: Request, res: Response) => {
   res.status(200).json({ message: "Server is running properly" });
 });
