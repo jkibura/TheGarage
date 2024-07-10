@@ -9,14 +9,14 @@ const router = express.Router();
 
 // Route to fetch assigned jobs for the authenticated worker
 router.get(
-  "/jobs/assigned",
+  "/orders/assigned",
   authMiddleware(["worker"]),
   getAssignedJobsController
 );
 
 // Route to update job status
 router.put(
-  "/jobs/:orderId/status",
+  "/orders/:orderId/status",
   authMiddleware(["worker"]),
   updateJobStatusController
 );

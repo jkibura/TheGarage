@@ -27,6 +27,10 @@ export const createOrderController = async (
   const { serviceId } = req.params;
   const clientId = req.user?.id;
 
+  console.log("Request body:", req.body);
+  console.log("Request params:", req.params);
+  console.log("Authenticated user ID:", clientId);
+
   try {
     const newOrder = new Order({
       clientId,
@@ -40,25 +44,27 @@ export const createOrderController = async (
       newOrder,
     });
   } catch (error) {
+    console.log("Error placing order:", error);
     res
       .status(500)
       .json({ message: "Error placing order. Please try again.", error });
   }
 };
 
-export const getClientsJobsController = async (
+export const getClientsOrdersController = async (
   req: AuthRequest,
   res: Response
 ) => {
   try {
     const Jobs = await Order.find({ clientId: req.user?.id })
-      .populate("assignedWorker")
+      .populate("assignedWorker", "username")
       .populate({
         path: "clientId",
         model: "User",
-      });
+      })
+      .populate("serviceId", "name");
     res.status(200).json(Jobs);
   } catch (error) {
-    res.status(500).json({ message: "Error fetching jobs", error });
+    res.status(500).json({ message: "Error fetching orders", error });
   }
 };

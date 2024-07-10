@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getClientsJobsController = exports.createOrderController = exports.getAllServicesController = void 0;
+exports.getClientsOrdersController = exports.createOrderController = exports.getAllServicesController = void 0;
 const Order_1 = __importDefault(require("../models/Order"));
 const Services_1 = __importDefault(require("../models/Services"));
 const getAllServicesController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -32,6 +32,9 @@ const createOrderController = (req, res) => __awaiter(void 0, void 0, void 0, fu
     const { additionalParts } = req.body;
     const { serviceId } = req.params;
     const clientId = (_a = req.user) === null || _a === void 0 ? void 0 : _a.id;
+    console.log("Request body:", req.body);
+    console.log("Request params:", req.params);
+    console.log("Authenticated user ID:", clientId);
     try {
         const newOrder = new Order_1.default({
             clientId,
@@ -45,25 +48,27 @@ const createOrderController = (req, res) => __awaiter(void 0, void 0, void 0, fu
         });
     }
     catch (error) {
+        console.log("Error placing order:", error);
         res
             .status(500)
             .json({ message: "Error placing order. Please try again.", error });
     }
 });
 exports.createOrderController = createOrderController;
-const getClientsJobsController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const getClientsOrdersController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     try {
         const Jobs = yield Order_1.default.find({ clientId: (_a = req.user) === null || _a === void 0 ? void 0 : _a.id })
-            .populate("assignedWorker")
+            .populate("assignedWorker", "username")
             .populate({
             path: "clientId",
             model: "User",
-        });
+        })
+            .populate("serviceId", "name");
         res.status(200).json(Jobs);
     }
     catch (error) {
-        res.status(500).json({ message: "Error fetching jobs", error });
+        res.status(500).json({ message: "Error fetching orders", error });
     }
 });
-exports.getClientsJobsController = getClientsJobsController;
+exports.getClientsOrdersController = getClientsOrdersController;

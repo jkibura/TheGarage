@@ -10,6 +10,6 @@ const router = express_1.default.Router();
 router.get("/dashboard", (0, authMiddleware_1.authMiddleware)(["client"]), clientController_1.getAllServicesController);
 // Purchase a service
 router.post("/purchase/:serviceId", (0, authMiddleware_1.authMiddleware)(["client"]), clientController_1.createOrderController);
-// Fetching jobs for the client
-router.get("/jobs", (0, authMiddleware_1.authMiddleware)(["client"]), clientController_1.getClientsJobsController);
+// Fetching orders for the client
+router.get("/orders", (0, authMiddleware_1.authMiddleware)(["client"]), clientController_1.getClientsOrdersController);
 module.exports = router;

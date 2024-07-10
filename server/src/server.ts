@@ -1,11 +1,16 @@
 import express, { Express, Request, Response } from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
+import mongoSanitize from "express-mongo-sanitize";
+/* import xss from "xss-clean"; */
+import { setCspHeaders } from "./middleware/securityMiddleware";
 import authRoutes from "./routes/authRoutes";
 import clientRoutes from "./routes/clientRoutes";
 import adminRoutes from "./routes/adminRoutes";
 import workerRoutes from "./routes/workerRoutes";
 import cors from "cors";
+import { limiter } from "./middleware/rateLimiter";
 
 dotenv.config();
 
@@ -17,7 +22,27 @@ const app: Express = express();
 // Middleware for parsing JSON
 app.use(express.json());
 
-app.use(cors());
+// Middleware for cookies
+app.use(cookieParser());
+
+app.use(
+  cors({
+    credentials: true,
+    origin: "http://localhost:3000",
+  })
+);
+
+// Sanitize data against NoSQL Injection
+// app.use(mongoSanitize());
+
+// Prevent XSS attacks
+// app.use(xss());
+
+// middleware for rate limiter
+// app.use(limiter);
+
+// Use CSP middleware
+// app.use(setCspHeaders());
 
 // Connecting to MongoDB
 mongoose
@@ -31,7 +56,7 @@ app.get("/garage", (req: Request, res: Response) => {
 });
 
 // Middleware for our routes
-app.use("/auth", authRoutes);
+app.use("/api/auth", authRoutes);
 app.use("/api/client", clientRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/workers", workerRoutes);

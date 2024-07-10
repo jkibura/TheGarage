@@ -66,6 +66,20 @@ export const allocateOrderController = async (req: Request, res: Response) => {
   }
 };
 
+export const getAllWorkersController = async (req: Request, res: Response) => {
+  try {
+    const workers = await User.find({ role: "worker" });
+
+    if (!workers || workers.length === 0) {
+      return res.status(404).json({ message: "Workers not found" });
+    }
+
+    res.status(200).json({ message: "Workers fetched successfully", workers });
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching workers", error });
+  }
+};
+
 export const deleteWorkerController = async (req: Request, res: Response) => {
   try {
     const { workerId } = req.params;
