@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteWorkerController = exports.allocateOrderController = exports.getAllOrdersController = exports.serviceController = void 0;
+exports.deleteWorkerController = exports.getAllWorkersController = exports.allocateOrderController = exports.getAllOrdersController = exports.serviceController = void 0;
 const Order_1 = __importDefault(require("../models/Order"));
 const User_1 = __importDefault(require("../models/User"));
 const Services_1 = __importDefault(require("../models/Services"));
@@ -70,6 +70,19 @@ const allocateOrderController = (req, res) => __awaiter(void 0, void 0, void 0, 
     }
 });
 exports.allocateOrderController = allocateOrderController;
+const getAllWorkersController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const workers = yield User_1.default.find({ role: "worker" });
+        if (!workers || workers.length === 0) {
+            return res.status(404).json({ message: "Workers not found" });
+        }
+        res.status(200).json({ message: "Workers fetched successfully", workers });
+    }
+    catch (error) {
+        res.status(500).json({ message: "Error fetching workers", error });
+    }
+});
+exports.getAllWorkersController = getAllWorkersController;
 const deleteWorkerController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { workerId } = req.params;

@@ -7,7 +7,7 @@ const workerController_1 = require("../controllers/workerController");
 const authMiddleware_1 = require("../middleware/authMiddleware");
 const router = express_1.default.Router();
 // Route to fetch assigned jobs for the authenticated worker
-router.get("/jobs/assigned", (0, authMiddleware_1.authMiddleware)(["worker"]), workerController_1.getAssignedJobsController);
+router.get("/orders/assigned", (0, authMiddleware_1.authMiddleware)(["worker"]), workerController_1.getAssignedJobsController);
 // Route to update job status
-router.put("/jobs/:orderId/status", (0, authMiddleware_1.authMiddleware)(["worker"]), workerController_1.updateJobStatusController);
+router.put("/orders/:orderId/status", (0, authMiddleware_1.authMiddleware)(["worker"]), workerController_1.updateJobStatusController);
 module.exports = router;

@@ -10,6 +10,8 @@ const router = express_1.default.Router();
 router.post("/service/post", (0, authMiddleware_1.authMiddleware)(["admin"]), adminController_1.serviceController);
 // Route for handling fetching of orders available, which will be displayed at the admin dashboard
 router.get("/orders", (0, authMiddleware_1.authMiddleware)(["admin"]), adminController_1.getAllOrdersController);
+// Route for fetching all workers
+router.get("/workers", (0, authMiddleware_1.authMiddleware)(["admin"]), adminController_1.getAllWorkersController);
 // Route for allocating job to worker
 router.post("/allocatejob", (0, authMiddleware_1.authMiddleware)(["admin"]), adminController_1.allocateOrderController);
 // Route to delete a worker

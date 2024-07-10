@@ -17,8 +17,10 @@ const Order_1 = __importDefault(require("../models/Order"));
 const getAssignedJobsController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     try {
-        const orders = yield Order_1.default.find({ assignedWorker: (_a = req.user) === null || _a === void 0 ? void 0 : _a.id });
-        res.status(200).json({ orders });
+        const orders = yield Order_1.default.find({ assignedWorker: (_a = req.user) === null || _a === void 0 ? void 0 : _a.id })
+            .populate("serviceId", "name")
+            .populate("clientId", "username");
+        res.status(200).json(orders);
     }
     catch (error) {
         res.status(500).json({ message: "Error fetching assigned jobs", error });

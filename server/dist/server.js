@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const dotenv_1 = __importDefault(require("dotenv"));
+const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const authRoutes_1 = __importDefault(require("./routes/authRoutes"));
 const clientRoutes_1 = __importDefault(require("./routes/clientRoutes"));
 const adminRoutes_1 = __importDefault(require("./routes/adminRoutes"));
@@ -17,17 +18,31 @@ const DATABASE_URI = process.env.DATABASE_URI;
 const app = (0, express_1.default)();
 // Middleware for parsing JSON
 app.use(express_1.default.json());
-app.use((0, cors_1.default)());
+// Middleware for cookies
+app.use((0, cookie_parser_1.default)());
+app.use((0, cors_1.default)({
+    credentials: true,
+    origin: "http://localhost:3000",
+}));
+// Sanitize data against NoSQL Injection
+// app.use(mongoSanitize());
+// Prevent XSS attacks
+// app.use(xss());
+// middleware for rate limiter
+// app.use(limiter);
+// Use CSP middleware
+// app.use(setCspHeaders());
 // Connecting to MongoDB
 mongoose_1.default
     .connect(DATABASE_URI)
     .then(() => console.log("Connected to database"))
     .catch((err) => console.log("Not Connected to database", err));
+// get request
 app.get("/garage", (req, res) => {
     res.status(200).json({ message: "Server is running properly" });
 });
 // Middleware for our routes
-app.use("/auth", authRoutes_1.default);
+app.use("/api/auth", authRoutes_1.default);
 app.use("/api/client", clientRoutes_1.default);
 app.use("/api/admin", adminRoutes_1.default);
 app.use("/api/workers", workerRoutes_1.default);

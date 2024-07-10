@@ -12,8 +12,10 @@ export const getAssignedJobsController = async (
   res: Response
 ) => {
   try {
-    const orders = await Order.find({ assignedWorker: req.user?.id });
-    res.status(200).json({ orders });
+    const orders = await Order.find({ assignedWorker: req.user?.id })
+      .populate("serviceId", "name")
+      .populate("clientId", "username");
+    res.status(200).json(orders);
   } catch (error) {
     res.status(500).json({ message: "Error fetching assigned jobs", error });
   }

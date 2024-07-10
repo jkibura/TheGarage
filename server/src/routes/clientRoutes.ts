@@ -2,7 +2,7 @@ import express from "express";
 import {
   getAllServicesController,
   createOrderController,
-  getClientsJobsController,
+  getClientsOrdersController,
 } from "../controllers/clientController";
 import { authMiddleware } from "../middleware/authMiddleware";
 
@@ -18,7 +18,7 @@ router.post(
   createOrderController
 );
 
-// Fetching jobs for the client
-router.get("/jobs", authMiddleware(["client"]), getClientsJobsController);
+// Fetching orders for the client
+router.get("/orders", authMiddleware(["client"]), getClientsOrdersController);
 
 export = router;

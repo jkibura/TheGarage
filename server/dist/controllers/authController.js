@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.loginController = exports.registerController = void 0;
+exports.authCheckController = exports.logoutController = exports.loginController = exports.registerController = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const User_1 = __importDefault(require("../models/User"));
@@ -46,8 +46,13 @@ const loginController = (req, res) => __awaiter(void 0, void 0, void 0, function
                 .status(400)
                 .json({ message: "Invalid credentials. Please try again" });
         }
-        const token = jsonwebtoken_1.default.sign({ id: user._id, role: user.role }, process.env.TOKEN_SECRET, { expiresIn: "1hr" });
-        res.json({ token });
+        const token = jsonwebtoken_1.default.sign({ id: user._id, role: user.role }, process.env.TOKEN_SECRET, { expiresIn: "2hr" });
+        res.cookie("token", token, {
+            httpOnly: true,
+            /* secure: true, */
+            sameSite: "strict",
+        });
+        res.status(200).json({ message: "Login successful", role: user.role });
     }
     catch (error) {
         res
@@ -56,3 +61,25 @@ const loginController = (req, res) => __awaiter(void 0, void 0, void 0, function
     }
 });
 exports.loginController = loginController;
+const logoutController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    res.clearCookie("token");
+    res.status(200).json({ message: "Logout successful" });
+});
+exports.logoutController = logoutController;
+const authCheckController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const token = req.cookies.token;
+        if (!token) {
+            throw new Error("Unauthorized");
+        }
+        // Verify the token
+        const decodedToken = jsonwebtoken_1.default.verify(token, process.env.TOKEN_SECRET);
+        // Assuming your decodedToken includes the role information
+        const role = decodedToken.role;
+        res.status(200).json({ message: "Authenticated", role });
+    }
+    catch (error) {
+        res.status(401).json({ message: "Unauthorized" });
+    }
+});
+exports.authCheckController = authCheckController;
