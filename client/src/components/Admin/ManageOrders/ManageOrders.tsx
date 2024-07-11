@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import API from "../../api/index";
-import { useOrders } from "../../context/OrderContext";
+import API from "../../../api/index";
+import { useOrders } from "../../../context/OrderContext";
 
 interface Worker {
   _id: string;
@@ -48,7 +48,7 @@ const ManageOrders: React.FC = () => {
   };
 
   return (
-    <div>
+    /*  <div>
       <h1>Manage Orders</h1>
       <div>
         <label>Order:</label>
@@ -79,6 +79,53 @@ const ManageOrders: React.FC = () => {
         </select>
       </div>
       <button onClick={handleAllocateOrder}>Allocate Order</button>
+    </div> */
+    <div>
+      <h1>Manage Orders</h1>
+      <table className="manage-orders-table">
+        <thead>
+          <tr>
+            <th>Order</th>
+            <th>Worker</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <select
+                className="small-select"
+                value={selectedOrder}
+                onChange={(e) => setSelectedOrder(e.target.value)}
+              >
+                <option value="">Select an order</option>
+                {orders.map((order) => (
+                  <option key={order._id} value={order._id}>
+                    {order.serviceId.name} - {order.clientId.username}
+                  </option>
+                ))}
+              </select>
+            </td>
+            <td>
+              <select
+                className="small-select"
+                value={selectedWorker}
+                onChange={(e) => setSelectedWorker(e.target.value)}
+              >
+                <option value="">Select a worker</option>
+                {workers.map((worker) => (
+                  <option key={worker._id} value={worker._id}>
+                    {worker.username}
+                  </option>
+                ))}
+              </select>
+            </td>
+            <td>
+              <button onClick={handleAllocateOrder}>Allocate Order</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import API from "../../api/index";
-import { useAuth } from "../../context/AuthContext";
+import API from "../../../api/index";
+import { useAuth } from "../../../context/AuthContext";
+import "./ManageWorkers.css";
 
 interface Worker {
   _id: string;
@@ -44,15 +45,33 @@ const ManageWorkers: React.FC = () => {
   return (
     <div>
       <h1>Manage Workers</h1>
-      <ul>
-        {workers.map((worker) => (
-          <li key={worker._id}>
-            <p>Username: {worker.username}</p>
-            <p>Email: {worker.email}</p>
-            <button onClick={() => deleteWorker(worker._id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
+      <div className="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {workers.map((worker) => (
+              <tr key={worker._id}>
+                <td>{worker.username}</td>
+                <td>{worker.email}</td>
+                <td>
+                  <button
+                    onClick={() => deleteWorker(worker._id)}
+                    className="btn-delete"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

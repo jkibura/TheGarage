@@ -23,6 +23,8 @@ const AdminDashboard: React.FC = () => {
       )}
       <Link to={"/admin/manageorders"}>Manage Orders</Link>
       <Link to={"/admin/manageworkers"}>Manage Workers</Link>
+      <Link to={"/admin/createworkersaccounts"}>Add New Workers</Link>
+      <Link to={"/admin/addnewservices"}>Add New Services</Link>
     </div>
   );
 };
