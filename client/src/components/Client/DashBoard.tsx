@@ -24,21 +24,28 @@ const ClientDashboard: React.FC = () => {
   };
 
   return (
-    <div>
-      <h1>Client Dashboard</h1>
-      <ul>
+    <div className="client">
+      <h2>Client Dashboard</h2>
+      <div className="service-list">
         {services.map((service: any) => (
-          <li key={service._id}>
-            <h2>{service.name}</h2>
-            <p>{service.description}</p>
-            <p>{service.price} KSH</p>
+          <div className="service" key={service._id}>
+            <img src={service.image} alt={service.name} />
+            <div>
+              <h3>{service.name}</h3>
+              <p>{service.description}</p>
+              <p>{service.price} KSH</p>
+            </div>
             <button onClick={() => handlePurchase(service._id)}>
-              Purchase
+                Purchase
             </button>
-          </li>
+              
+          </div>
         ))}
-      </ul>
-      <Link to={"/client/orders"}>View Your Orders</Link>
+      </div>
+      <div className="down-btns">
+        <Link to={"/"}>Home</Link>
+        <Link to={"/client/orders"}>Orders</Link>
+      </div>
     </div>
   );
 };

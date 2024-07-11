@@ -301,15 +301,15 @@ const WorkerDashboard: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="worker">
       <h1>Worker Dashboard</h1>
-      <ul>
+      <div>
         {Array.isArray(orders) && orders.length === 0 ? (
           <p>No jobs assigned</p>
         ) : (
           Array.isArray(orders) &&
           orders.map((order) => (
-            <li key={order._id}>
+            <div key={order._id}>
               <p>Service: {order.serviceId.name}</p>
               <p>Client: {order.clientId.username}</p>
               <p>Status: {order.status}</p>
@@ -323,10 +323,10 @@ const WorkerDashboard: React.FC = () => {
               >
                 Mark as In Progress
               </button>
-            </li>
+            </div>
           ))
         )}
-      </ul>
+      </div>
     </div>
   );
 };

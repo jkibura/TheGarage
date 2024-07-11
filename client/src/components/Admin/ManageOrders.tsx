@@ -48,37 +48,40 @@ const ManageOrders: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className=" admin">
       <h1>Manage Orders</h1>
-      <div>
-        <label>Order:</label>
-        <select
-          value={selectedOrder}
-          onChange={(e) => setSelectedOrder(e.target.value)}
-        >
-          <option value="">Select an order</option>
-          {orders.map((order) => (
-            <option key={order._id} value={order._id}>
-              {order.serviceId.name} - {order.clientId.username}
-            </option>
-          ))}
-        </select>
+      <div className="admin-form">
+        <div>
+          <label>Order:</label>
+          <select
+            value={selectedOrder}
+            onChange={(e) => setSelectedOrder(e.target.value)}
+          >
+            <option value="">Select an order</option>
+            {orders.map((order) => (
+              <option key={order._id} value={order._id}>
+                {order.serviceId.name} - {order.clientId.username}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label>Worker:</label>
+          <select
+            value={selectedWorker}
+            onChange={(e) => setSelectedWorker(e.target.value)}
+          >
+            <option value="">Select a worker</option>
+            {workers.map((worker) => (
+              <option key={worker._id} value={worker._id}>
+                {worker.username}
+              </option>
+            ))}
+          </select>
+        </div>
+        <button onClick={handleAllocateOrder}>Allocate Order</button>
       </div>
-      <div>
-        <label>Worker:</label>
-        <select
-          value={selectedWorker}
-          onChange={(e) => setSelectedWorker(e.target.value)}
-        >
-          <option value="">Select a worker</option>
-          {workers.map((worker) => (
-            <option key={worker._id} value={worker._id}>
-              {worker.username}
-            </option>
-          ))}
-        </select>
-      </div>
-      <button onClick={handleAllocateOrder}>Allocate Order</button>
+      
     </div>
   );
 };

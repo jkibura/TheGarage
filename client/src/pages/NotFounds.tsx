@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 
 const NotFound: React.FC = () => {
   return (
-    <div>
+    <div className="not-found">
       <h1>404 - Page Not Found</h1>
-      <Link to="/">Go Home</Link>
+      
+      <Link to="/"><span className="material-symbols-outlined">home</span>Go Home</Link>
+      <div>also, Anguka nayo 🕺🏾</div>
     </div>
   );
 };

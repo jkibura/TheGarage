@@ -12,9 +12,9 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav>
-      <h1>Garage and Carwash</h1>
-      {isAuthenticated && <button onClick={handleLogout}>Logout</button>}
+    <nav className="navbar">
+      <h1 className="navbar-text">Garage and Carwash</h1>
+      {isAuthenticated && <button onClick={handleLogout} className="logout-button"><span className="material-symbols-outlined">logout</span></button>}
     </nav>
   );
 };
