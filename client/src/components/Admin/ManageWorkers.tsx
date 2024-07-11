@@ -42,17 +42,17 @@ const ManageWorkers: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className="admin">
       <h1>Manage Workers</h1>
-      <ul>
+      <div>
         {workers.map((worker) => (
-          <li key={worker._id}>
+          <div key={worker._id}>
             <p>Username: {worker.username}</p>
             <p>Email: {worker.email}</p>
             <button onClick={() => deleteWorker(worker._id)}>Delete</button>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

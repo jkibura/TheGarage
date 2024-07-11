@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import api from "../../api/index";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
 const Login: React.FC = () => {
@@ -39,27 +39,31 @@ const Login: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Email:</label>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </div>
-      <div>
-        <label>Password:</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </div>
-      <button type="submit">Login</button>
-    </form>
+    <div className="auth">
+        <form onSubmit={handleSubmit}>
+          <h1>Login</h1>
+          <div>
+            <label><span className="material-symbols-outlined">Email</span><strong>Email</strong></label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label><span className="material-symbols-outlined">lock</span><strong>Password</strong></label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <button className='button'type="submit">Login</button>
+          <p>Don't have an account? <Link to='/register'>Register</Link></p>
+        </form>
+     </div>   
   );
 };
 
