@@ -5,6 +5,7 @@ interface IOrder extends Document {
   serviceId: mongoose.Types.ObjectId;
   additionalParts: string[];
   status: "pending" | "in progress" | "completed";
+
   assignedWorker?: mongoose.Types.ObjectId;
   createdAt: Date;
   updatedAt: Date;

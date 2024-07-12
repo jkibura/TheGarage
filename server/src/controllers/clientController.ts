@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import Order from "../models/Order";
 import Service from "../models/Services";
+import SpareParts from "../models/SpareParts";
 
 interface AuthRequest extends Request {
   user?: {
@@ -11,7 +12,10 @@ interface AuthRequest extends Request {
 export const getAllServicesController = async (req: Request, res: Response) => {
   try {
     const services = await Service.find();
-    res.json({ services, message: "Welcome to the client dashboard" });
+    const spares = await SpareParts.find();
+    res
+      .status(200)
+      .json({ services, spares, message: "Welcome to the client dashboard" });
   } catch (error) {
     res
       .status(500)

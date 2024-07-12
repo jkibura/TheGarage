@@ -1,0 +1,13 @@
+{
+  "folders": [
+	{
+		"name": "TheGarage-1",
+		"path": "../../.."
+	},
+	{
+		"name": "src1",
+		"path": "../../../../TheGarage-1 2/src1"
+	}
+],
+  "settings": {}
+}

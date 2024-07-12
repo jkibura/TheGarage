@@ -1,34 +1,47 @@
-import React from "react";
-import { useOrders } from "../../context/OrderContext";
+import React, { useState } from "react";
+import "./DashBoard.css";
 import { Link } from "react-router-dom";
 
 const AdminDashboard: React.FC = () => {
-  const { orders } = useOrders();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const handleToggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
   return (
-    <div>
-      <div className="admin">
-        <h2><span className="material-symbols-outlined">shield-person</span>admin</h2>
-        {orders.length === 0 ? (
-          <p>No orders made.</p>
-        ) : (
-          <div className="admin-list">
-            {orders.map((order) => (
-              <div className='admin-list-item'key={order._id}>
-                <p>Service: {order.serviceId.name}</p>
-                <p>Client: {order.clientId.username}</p>
-                <p>Status: {order.status}</p>
-              </div>
-            ))}
-          </div>
-        )}
-        
+    <>
+      <div className="admin-dashboard">
+        <h1 className="admin-dashboard-h1">Welcome to the Admin Dashboard</h1>
+        <div className="top-buttons">
+          <button className="toggle-btn" onClick={handleToggleSidebar}>
+            {isSidebarOpen ? "X" : "☰"}
+          </button>
+        </div>
+        <div className={`sidebar ${isSidebarOpen ? "sidebar-open" : ""}`}>
+          <ul>
+            <li className="admin-links">
+              <Link to={"/admin/vieworders"}>View Orders</Link>
+            </li>
+            <li className="admin-links">
+              <Link to={"/admin/manageorders"}>Manage Orders</Link>
+            </li>
+            <li className="admin-links">
+              <Link to={"/admin/manageworkers"}>Manage Workers</Link>
+            </li>
+            <li className="admin-links">
+              <Link to={"/admin/createworkersaccounts"}>Add New Workers</Link>
+            </li>
+            <li className="admin-links">
+              <Link to={"/admin/addnewservices"}>Add New Services</Link>
+            </li>
+            <li className="admin-links">
+              <Link to={"/admin/addnewspares"}>Add New Spares</Link>
+            </li>
+          </ul>
+        </div>
       </div>
-    <div className="side-btns">
-      <Link to={"/admin/manageorders"}>Manage Orders</Link>
-      <Link to={"/admin/manageworkers"}>Manage Workers</Link>
-    </div>
-  </div>
+    </>
   );
 };
 

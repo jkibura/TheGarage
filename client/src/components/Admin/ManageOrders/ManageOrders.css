@@ -1,0 +1,62 @@
+/* General table styling */
+.manage-orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.manage-orders-table th,
+.manage-orders-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.manage-orders-table th {
+  background-color: #f2f2f2;
+}
+
+/* Select menu styling */
+select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 16px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDEyIDgiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEgMmgxMGwtNSA1LTUtNXoiIGZpbGw9IiMwMDAiLz4KPC9zdmc+Cg==");
+  background-repeat: no-repeat;
+  background-position: right 10px top 50%;
+}
+
+select:focus {
+  outline: none;
+  border-color: #777;
+}
+
+/* Adjusting the select menu size */
+select.small-select {
+  width: auto;
+  display: inline-block;
+}
+
+@media screen and (max-width: 600px) {
+  .manage-orders-table,
+  .manage-orders-table th,
+  .manage-orders-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .manage-orders-table th,
+  .manage-orders-table td {
+    padding: 10px;
+  }
+
+  .manage-orders-table th {
+    text-align: center;
+  }
+}
