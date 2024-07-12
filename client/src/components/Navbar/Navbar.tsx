@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar: React.FC = () => {
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, logout, role } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -13,8 +15,27 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="navbar">
-      <h1 className="navbar-text">Garage and Carwash</h1>
-      {isAuthenticated && <button onClick={handleLogout} className="logout-button"><span className="material-symbols-outlined">logout</span></button>}
+      <h1 className="navbar-text">Fix & Fresh</h1>
+      <div className="login-logout">
+        <Link to={"/"}>
+          <FontAwesomeIcon
+            icon={faHome}
+            size="2x"
+            className="fa-home-icon-nav"
+          />
+        </Link>
+        {!isAuthenticated && (
+          <Link to={"/login"} className="login">
+            Login
+          </Link>
+        )}
+
+        {isAuthenticated && (
+          <button onClick={handleLogout} className="logout-button">
+            <span className="material-symbols-outlined">logout</span>
+          </button>
+        )}
+      </div>
     </nav>
   );
 };

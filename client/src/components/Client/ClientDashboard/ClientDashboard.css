@@ -1,0 +1,179 @@
+.card {
+  width: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  transition: box-shadow 0.2s;
+  position: relative;
+  flex: 0 0 auto; /* Prevents the cards from shrinking */
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.2s;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.card-content .category {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+}
+
+.card-content .title {
+  margin: 7px 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+}
+
+.card-content .description {
+  font-size: 14px;
+  color: #333;
+}
+
+.card:hover img {
+  transform: scale(1.03); /* Zoom in effect */
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-purchase {
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 16px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.card-purchase p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: bold;
+  color: #000;
+  margin-right: 8px;
+}
+
+.card-purchase button {
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.card-purchase button:hover {
+  background-color: #0056b3;
+}
+
+.service-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: 20px;
+  background-color: #f0f0f0;
+  margin: auto;
+  padding: 1rem;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+/* Adjusts the height of the scrollbar */
+.service-list::-webkit-scrollbar {
+  height: 2px;
+}
+
+/* Scrollbar thumb color */
+.service-list::-webkit-scrollbar-thumb {
+  background: #007bff;
+  border-radius: 4px;
+}
+
+/* Scrollbar thumb hover color */
+.service-list::-webkit-scrollbar-thumb:hover {
+  background: #007bff;
+}
+
+.purchase-input {
+  width: 300px;
+  padding: 10px;
+}
+
+.service-h2 {
+  margin-top: 40px;
+}
+
+.spares-h2 {
+  margin-top: 40px;
+}
+
+/* Header part */
+.header {
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  height: 350px;
+  justify-content: center;
+  align-items: center;
+  text-align: le;
+  color: white;
+  padding: 0 20px;
+}
+
+.content-header h1 {
+  font-size: 2em;
+  margin: 0;
+}
+
+.content-header-h1 {
+  font-size: 4.5em;
+  text-align: left;
+  font-family: "Arial", sans-serif;
+}
+
+/* Responsive Design */
+@media (min-width: 300px) {
+  .content-header-h1 {
+    font-size: 2.5em;
+  }
+}
+
+@media (min-width: 600px) {
+  .content-header-h1 {
+    font-size: 3em;
+  }
+}
+
+@media (min-width: 900px) {
+  .content-header-h1 {
+    font-size: 4em;
+  }
+}
+
+@media (min-width: 1200px) {
+  .content-header-h1 {
+    font-size: 4.5em;
+  }
+}

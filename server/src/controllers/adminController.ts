@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import Order from "../models/Order";
 import User from "../models/User";
 import Service from "../models/Services";
+import SpareParts from "../models/SpareParts";
 
 interface AuthRequest extends Request {
   user?: {
@@ -17,11 +18,32 @@ export const serviceController = async (req: AuthRequest, res: Response) => {
     }
 
     const { name, description, price } = req.body;
-    const service = new Service({ name, description, price });
+    const image = req.file
+      ? /* req.file.path   */ `/uploads/${req.file.filename}`
+      : "";
+    const service = new Service({ name, description, price, image });
     await service.save();
     res.status(200).json({ message: "Service created successfully", service });
   } catch (error) {
     res.status(500).json({ message: "Error creating service", error });
+  }
+};
+
+export const sparesController = async (req: AuthRequest, res: Response) => {
+  try {
+    if (!req.user || req.user.role !== "admin") {
+      return res.status(403).json({ message: "Unauthorized" });
+    }
+
+    const { name, description, price } = req.body;
+    const image = req.file
+      ? /* req.file.path   */ `/uploads/${req.file.filename}`
+      : "";
+    const spares = new SpareParts({ name, description, price, image });
+    await spares.save();
+    res.status(200).json({ message: "Spares created successfully", spares });
+  } catch (error) {
+    res.status(500).json({ message: "Error creating spares", error });
   }
 };
 

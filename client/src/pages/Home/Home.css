@@ -1,0 +1,291 @@
+.welcome-home {
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  height: 350px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 0 20px;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+.welcome-home-description {
+  font-size: 45px;
+  font-family: "Poppins", sans-serif;
+}
+
+.welcome-home-btn {
+  background-color: #0044cc;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  cursor: pointer;
+  margin-top: 50px;
+  width: 200px;
+  border-radius: 10px;
+  font-family: "Poppins", sans-serif;
+}
+
+.welcome-home-link {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+.welcome-home-description-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* aboutusSection.css */
+.aboutus-section {
+  display: flex;
+
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  margin-top: 50px;
+  min-height: 100vh;
+  align-items: center;
+}
+
+.aboutus-image {
+  flex: 1;
+  width: 400px;
+}
+
+.aboutus-image img {
+  width: 100%;
+  height: auto;
+  /* border-radius: 8px; */
+}
+
+.aboutus-content {
+  flex: 1;
+  padding-left: 40px;
+}
+
+.aboutus-content h1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.aboutus-content p {
+  font-family: "Poppins", sans-serif;
+
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.aboutus-p {
+  font-size: 18px;
+  font-size: Arial;
+}
+
+.aboutus-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-family: "Arial", sans-serif;
+  font-size: 1em;
+  color: white;
+  background-color: black;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: #333;
+}
+
+@media (max-width: 768px) {
+  .aboutus-section {
+    flex-direction: column;
+  }
+
+  .aboutus-content {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .aboutus-buttons {
+    justify-content: center;
+  }
+}
+
+/* STARS */
+
+.static-five-stars {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.star {
+  color: gold;
+  font-size: 24px;
+  margin-right: 4px;
+}
+
+/* GET OUR SERVICES */
+.get-our-services {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-size: cover;
+  background-position: center;
+  color: whitesmoke;
+  padding: 20px;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.get-our-services-blue {
+  background-color: #0044cc;
+  padding: 15px;
+  border-radius: 10px;
+  color: whitesmoke;
+}
+
+.get-our-services-h2 {
+  margin-top: 20px;
+  font-size: 30px;
+}
+
+.get-our-services-p {
+  margin-top: 20px;
+}
+
+.get-our-services-btn {
+  background-color: #0044cc;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 40px;
+}
+@media (min-width: 1200px) {
+  .get-our-services-h2 {
+    margin-top: 80px;
+    font-size: 60px;
+  }
+
+  .get-our-services-p {
+    margin-top: 80px;
+    font-size: 40px;
+  }
+  .static-five-stars {
+    display: inline-block;
+    margin-top: 60px;
+  }
+
+  .get-our-services-btn {
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 60px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .get-our-services-h2 {
+    margin-top: 80px;
+    font-size: 40px;
+  }
+
+  .get-our-services-p {
+    margin-top: 80px;
+    font-size: 40px;
+  }
+  .static-five-stars {
+    display: inline-block;
+    margin-top: 40px;
+  }
+
+  .get-our-services-btn {
+    background-color: #647494;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 60px;
+  }
+}
+
+@media (min-width: 768px) {
+  .get-our-services-h2 {
+    margin-top: 30px;
+    font-size: 40px;
+  }
+
+  .get-our-services-p {
+    margin-top: 80px;
+    font-size: 40px;
+  }
+  .static-five-stars {
+    display: inline-block;
+    margin-top: 40px;
+  }
+
+  .get-our-services-btn {
+    background-color: #0044cc;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 40px;
+  }
+}
+
+@media (min-width: 600px) {
+  .get-our-services-h2 {
+    margin-top: 30px;
+    font-size: 40px;
+  }
+
+  .get-our-services-p {
+    margin-top: 30px;
+    font-size: 40px;
+  }
+  .static-five-stars {
+    display: inline-block;
+    margin-top: 40px;
+  }
+
+  .get-our-services-btn {
+    background-color: #0044cc;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 30px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 420px) {
+  .get-our-services {
+    min-width: 320px;
+    width: 100vw;
+  }
+  .get-our-services-h2 {
+    margin-top: 50px;
+    font-size: 30px;
+  }
+
+  .get-our-services-p {
+    margin-top: 50px;
+    font-size: 20px;
+  }
+  .static-five-stars {
+    display: inline-block;
+    margin-top: 50px;
+  }
+
+  .get-our-services-btn {
+    background-color: #0044cc;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 30px;
+  }
+}

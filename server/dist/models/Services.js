@@ -37,5 +37,9 @@ const serviceSchema = new mongoose_1.Schema({
         type: Number,
         required: true,
     },
+    image: {
+        type: String,
+        required: true,
+    },
 });
 exports.default = mongoose_1.default.model("Service", serviceSchema);

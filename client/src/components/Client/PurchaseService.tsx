@@ -30,6 +30,7 @@ const PurchaseService: React.FC = () => {
           value={additionalParts}
           onChange={(e) => setAdditionalParts(e.target.value)}
           placeholder="Enter additional parts (comma separated)"
+          className="purchase-input"
         />
       </div>
       <button onClick={handlePurchase}>Purchase</button>

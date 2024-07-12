@@ -15,10 +15,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getClientsOrdersController = exports.createOrderController = exports.getAllServicesController = void 0;
 const Order_1 = __importDefault(require("../models/Order"));
 const Services_1 = __importDefault(require("../models/Services"));
+const SpareParts_1 = __importDefault(require("../models/SpareParts"));
 const getAllServicesController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const services = yield Services_1.default.find();
-        res.json({ services, message: "Welcome to the client dashboard" });
+        const spares = yield SpareParts_1.default.find();
+        res
+            .status(200)
+            .json({ services, spares, message: "Welcome to the client dashboard" });
     }
     catch (error) {
         res

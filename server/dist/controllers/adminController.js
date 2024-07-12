@@ -12,17 +12,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteWorkerController = exports.getAllWorkersController = exports.allocateOrderController = exports.getAllOrdersController = exports.serviceController = void 0;
+exports.deleteWorkerController = exports.getAllWorkersController = exports.allocateOrderController = exports.getAllOrdersController = exports.sparesController = exports.serviceController = void 0;
 const Order_1 = __importDefault(require("../models/Order"));
 const User_1 = __importDefault(require("../models/User"));
 const Services_1 = __importDefault(require("../models/Services"));
+const SpareParts_1 = __importDefault(require("../models/SpareParts"));
 const serviceController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         if (!req.user || req.user.role !== "admin") {
             return res.status(403).json({ message: "Unauthorized" });
         }
         const { name, description, price } = req.body;
-        const service = new Services_1.default({ name, description, price });
+        const image = req.file
+            ? /* req.file.path   */ `/uploads/${req.file.filename}`
+            : "";
+        const service = new Services_1.default({ name, description, price, image });
         yield service.save();
         res.status(200).json({ message: "Service created successfully", service });
     }
@@ -31,6 +35,24 @@ const serviceController = (req, res) => __awaiter(void 0, void 0, void 0, functi
     }
 });
 exports.serviceController = serviceController;
+const sparesController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        if (!req.user || req.user.role !== "admin") {
+            return res.status(403).json({ message: "Unauthorized" });
+        }
+        const { name, description, price } = req.body;
+        const image = req.file
+            ? /* req.file.path   */ `/uploads/${req.file.filename}`
+            : "";
+        const spares = new SpareParts_1.default({ name, description, price, image });
+        yield spares.save();
+        res.status(200).json({ message: "Spares created successfully", spares });
+    }
+    catch (error) {
+        res.status(500).json({ message: "Error creating spares", error });
+    }
+});
+exports.sparesController = sparesController;
 const getAllOrdersController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const orders = yield Order_1.default.find()

@@ -1,0 +1,72 @@
+.special-offers {
+  text-align: center;
+  padding: 20px;
+}
+
+.special-offers h2 {
+  color: #003997;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.offer-card {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 0 auto;
+  width: 80%;
+  max-width: 400px;
+  text-align: left;
+}
+
+.offer-card h3 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.offer-card p {
+  font-size: 16px;
+  color: #666;
+  margin: 5px 0;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+}
+
+.book-now {
+  background-color: #003997;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+.book-now:hover {
+  background-color: #002e7a;
+}
+
+.offer-details {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px 0 0;
+}
+
+.offer-details li {
+  font-size: 16px;
+  color: #333;
+  margin: 10px 0;
+}
+
+.offer-details li::before {
+  content: "✔";
+  color: green;
+  margin-right: 10px;
+}

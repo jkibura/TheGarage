@@ -5,13 +5,28 @@ import {
   allocateOrderController,
   serviceController,
   getAllWorkersController,
+  sparesController,
 } from "../controllers/adminController";
+import upload from "../middleware/upload";
 import { authMiddleware } from "../middleware/authMiddleware";
 
 const router = express.Router();
 
 // Route for posting a service
-router.post("/service/post", authMiddleware(["admin"]), serviceController);
+router.post(
+  "/service/post",
+  authMiddleware(["admin"]),
+  upload.single("image"),
+  serviceController
+);
+
+// Route for posting spare parts
+router.post(
+  "/service/spares",
+  authMiddleware(["admin"]),
+  upload.single("image"),
+  sparesController
+);
 
 // Route for handling fetching of orders available, which will be displayed at the admin dashboard
 router.get("/orders", authMiddleware(["admin"]), getAllOrdersController);
