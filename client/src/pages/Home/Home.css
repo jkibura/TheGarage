@@ -18,6 +18,7 @@ html {
   background-repeat: no-repeat;
   min-height: 100vh;
   width: 100%;
+  margin: 0;
 }
 
 .welcome-home-description {
@@ -332,9 +333,10 @@ html {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 800px) {
   .welcome-home {
-    background-size: contain;
+    min-height: 0;
+    max-height: 350px;
   }
 
   .welcome-home-description {
@@ -344,5 +346,12 @@ html {
   .welcome-home-btn {
     font-size: 0.8em;
     width: 120px;
+    padding: 5px 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .aboutus-image {
+    display: none;
   }
 }
