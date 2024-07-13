@@ -21,10 +21,10 @@ const PurchaseService: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="purchase-container">
       <h1>Purchase Service</h1>
       <div>
-        <label>Additional Parts:</label>
+        <label className="purchase-label">Additional Parts:</label>
         <input
           type="text"
           value={additionalParts}

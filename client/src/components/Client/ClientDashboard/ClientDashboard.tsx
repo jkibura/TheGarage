@@ -69,7 +69,7 @@ const ClientDashboard: React.FC = () => {
         </div>
       </header>
       <div className="client">
-        <h1>Client Home</h1>
+        <h1 className="page-h1">Client Home</h1>
         <h2 className="service-h2">Top Notch Servicing</h2>
         <div className="service-list">
           {services.map((service: any) => {

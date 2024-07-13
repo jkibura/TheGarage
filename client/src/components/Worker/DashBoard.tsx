@@ -55,6 +55,7 @@ export default WorkerDashboard;
 import React from "react";
 import { useOrders } from "../../context/OrderContext";
 import API from "../../api/index";
+import './worker.css'
 
 const WorkerDashboard: React.FC = () => {
   const { orders, fetchOrders } = useOrders();
@@ -74,14 +75,14 @@ const WorkerDashboard: React.FC = () => {
 
   return (
     <div className="worker">
-      <h1>Worker Dashboard</h1>
-      <div>
+      <h1 className="page-h1">Worker Dashboard</h1>
+      <div className="job-list">
         {Array.isArray(orders) && orders.length === 0 ? (
           <p>No jobs assigned</p>
         ) : (
           Array.isArray(orders) &&
           orders.map((order) => (
-            <div key={order._id}>
+            <div className="job" key={order._id}>
               <p>
                 Service:{" "}
                 {order.serviceId
@@ -94,17 +95,22 @@ const WorkerDashboard: React.FC = () => {
                   ? order.clientId.username
                   : "Client not specified"}
               </p>
+              <p>Additional Parts: {order.additionalParts.join(", ")}</p>
+              <p>Ordered on: <br></br>{new Date(order.createdAt).toLocaleString()}</p>
               <p>Status: {order.status}</p>
-              <button
-                onClick={() => handleStatusChange(order._id, "completed")}
-              >
-                Mark as Completed
-              </button>
-              <button
-                onClick={() => handleStatusChange(order._id, "in progress")}
-              >
-                Mark as In Progress
-              </button>
+              <p className="update-status"><strong>Update status:</strong></p>
+              <div className="status-btns">
+                <button
+                  onClick={() => handleStatusChange(order._id, "in progress")}
+                >
+                  In Progress
+                </button>
+                <button
+                  onClick={() => handleStatusChange(order._id, "completed")}
+                >
+                  Completed
+                </button>
+              </div>
             </div>
           ))
         )}
