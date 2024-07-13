@@ -71,6 +71,7 @@ const ClientDashboard: React.FC = () => {
         </div>
       </header>
       <div className="client">
+
         <h1>Client Home</h1>
         <div className="search-box-full">
           <div className="search-box">
@@ -86,6 +87,9 @@ const ClientDashboard: React.FC = () => {
             </div>
           </div>
         </div>
+
+        <h1 className="page-h1">Client Home</h1>
+
         <h2 className="service-h2">Top Notch Servicing</h2>
         <div className="service-list">
           {services
@@ -145,13 +149,25 @@ const ClientDashboard: React.FC = () => {
                     </button>
                   </div>
                 </div>
+
               );
             })}
+
+                <div className="card-purchase">
+                  <p>{spare.price} KSH</p>
+                  <button onClick={() => handlePurchase(spare._id)}>
+                    Purchase
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        <div className="down-btns">
+          <a href="www.example.com" target='_blank' rel='noreferrer' className="chatbot-btn">
+            <span className='material-symbols-outlined'> chat</span></a>
         </div>
 
-        <button className="chatbot-toggler">
-          <span className="material-symbols-rounded">mode_comment</span>
-        </button>
       </div>
       <Footer />
     </>

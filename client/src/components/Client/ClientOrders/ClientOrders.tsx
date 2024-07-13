@@ -8,7 +8,7 @@ const ClientOrders: React.FC = () => {
 
   return (
     <div className="client">
-      <h1>My Orders</h1>
+      <h1 className="page-h1">My Orders</h1>
       {orders.length === 0 ? (
         <p>No orders found.</p>
       ) : (
@@ -29,6 +29,7 @@ const ClientOrders: React.FC = () => {
           ))}
         </div>
       )}
+
     </div>
   );
 };
