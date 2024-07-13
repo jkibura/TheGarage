@@ -104,7 +104,6 @@ body {
 
 .login {
   text-decoration: none;
-  color: whitesmoke;
   font-size: large;
   margin-bottom: 5px;
   margin-right: 5px;
@@ -522,7 +521,7 @@ body {
 
 .fa-home-icon-nav {
   color: whitesmoke;
-  font-size: large;
+  font-size: 1.5rem;
   margin-right: 21px;
   margin-top: 2px;
   margin-bottom: 2px;
