@@ -1,3 +1,10 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
 .welcome-home {
   background-size: cover;
   background-position: center;
@@ -10,6 +17,7 @@
   padding: 0 20px;
   background-repeat: no-repeat;
   min-height: 100vh;
+  width: 100%;
 }
 
 .welcome-home-description {
@@ -159,11 +167,11 @@
 
 .get-our-services-h2 {
   margin-top: 20px;
-  font-size: 30px;
+  font-size: 90px;
 }
 
 .get-our-services-p {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .get-our-services-btn {
@@ -172,9 +180,10 @@
   border-radius: 10px;
   margin-top: 40px;
 }
+
 @media (min-width: 1200px) {
   .get-our-services-h2 {
-    margin-top: 80px;
+    margin-top: 90px;
     font-size: 60px;
   }
 
@@ -263,6 +272,28 @@
   }
 }
 
+@media (min-width: 421px) and (max-width: 599px) {
+  .get-our-services-h2 {
+    margin-top: 30px;
+    font-size: 38px;
+  }
+
+  .get-our-services-p {
+    margin-top: 30px;
+    font-size: 26px;
+  }
+  .static-five-stars {
+    display: inline-block;
+    margin-top: 25px;
+  }
+
+  .get-our-services-btn {
+    background-color: #0044cc;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 26px;
+  }
+}
 @media (min-width: 320px) and (max-width: 420px) {
   .get-our-services {
     min-width: 320px;
@@ -287,5 +318,31 @@
     padding: 15px;
     border-radius: 10px;
     margin-top: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .welcome-home-description {
+    font-size: 30px;
+  }
+
+  .welcome-home-btn {
+    font-size: 1em;
+    width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-home {
+    background-size: contain;
+  }
+
+  .welcome-home-description {
+    font-size: 20px;
+  }
+
+  .welcome-home-btn {
+    font-size: 0.8em;
+    width: 120px;
   }
 }

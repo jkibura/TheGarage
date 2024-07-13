@@ -177,3 +177,25 @@
     font-size: 4.5em;
   }
 }
+
+.chatbot-toggler {
+  position: fixed;
+  bottom: 30px;
+  right: 35px;
+  outline: none;
+  border: none;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #555454;
+  transition: all 0.2s ease;
+}
+
+.chatbot-toggler span {
+  color: #fff;
+  position: absolute;
+}

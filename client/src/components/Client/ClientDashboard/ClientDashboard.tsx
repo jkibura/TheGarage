@@ -4,6 +4,7 @@ import API from "../../../api/index";
 import "./ClientDashboard.css";
 import audiImage from "../../../assets/img/bmw.avif";
 import Footer from "../../Footer/Footer";
+import "./searchbar.css";
 
 interface Service {
   _id: string;
@@ -24,6 +25,7 @@ interface SpareParts {
 const ClientDashboard: React.FC = () => {
   const [services, setServices] = React.useState<Service[]>([]);
   const [spares, setSpares] = React.useState<SpareParts[]>([]);
+  const [search, setSearch] = React.useState("");
   const navigate = useNavigate();
 
   React.useEffect(() => {
@@ -45,7 +47,7 @@ const ClientDashboard: React.FC = () => {
         console.log("Fetched spare parts:", response.data.spares);
         setSpares(response.data.spares);
       } catch (error) {
-        console.error("Error fetching services:", error);
+        console.error("Error fetching spares:", error);
       }
     };
 
@@ -70,50 +72,86 @@ const ClientDashboard: React.FC = () => {
       </header>
       <div className="client">
         <h1>Client Home</h1>
+        <div className="search-box-full">
+          <div className="search-box">
+            <input
+              type="text"
+              placeholder="search-here"
+              onChange={(event) => {
+                setSearch(event.target.value);
+              }}
+            />
+            <div>
+              <i className="fas fa-search"></i>
+            </div>
+          </div>
+        </div>
         <h2 className="service-h2">Top Notch Servicing</h2>
         <div className="service-list">
-          {services.map((service: any) => {
-            return (
-              <div className="card" key={service._id}>
-                <img src={`${service.image}`} alt={service.name} />
-                <div className="card-content">
-                  <div className="category">{service.name}</div>
-                  <div className="title">{service.description}</div>
+          {services
+            .filter(function (z) {
+              if (search === "") {
+                return true;
+              } else if (z.name.toLowerCase().includes(search.toLowerCase())) {
+                return true;
+              } else {
+                return false;
+              }
+            })
+
+            .map((service: any) => {
+              return (
+                <div className="card" key={service._id}>
+                  <img src={`${service.image}`} alt={service.name} />
+                  <div className="card-content">
+                    <div className="category">{service.name}</div>
+                    <div className="title">{service.description}</div>
+                  </div>
+                  <div className="card-purchase">
+                    <p>{service.price} KSH</p>
+                    <button onClick={() => handlePurchase(service._id)}>
+                      Purchase
+                    </button>
+                  </div>
                 </div>
-                <div className="card-purchase">
-                  <p>{service.price} KSH</p>
-                  <button onClick={() => handlePurchase(service._id)}>
-                    Purchase
-                  </button>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
 
         <h2 className="spares-h2">Premium Spare Parts</h2>
         <div className="service-list">
-          {spares.map((spare: any) => {
-            return (
-              <div className="card" key={spare._id}>
-                <img src={`${spare.image}`} alt={spare.name} />
-                <div className="card-content">
-                  <div className="category">{spare.name}</div>
-                  <div className="title">{spare.description}</div>
+          {spares
+            .filter(function (z) {
+              if (search === "") {
+                return true;
+              } else if (z.name.toLowerCase().includes(search.toLowerCase())) {
+                return true;
+              } else {
+                return false;
+              }
+            })
+            .map((spare: any) => {
+              return (
+                <div className="card" key={spare._id}>
+                  <img src={`${spare.image}`} alt={spare.name} />
+                  <div className="card-content">
+                    <div className="category">{spare.name}</div>
+                    <div className="title">{spare.description}</div>
+                  </div>
+                  <div className="card-purchase">
+                    <p>{spare.price} KSH</p>
+                    <button onClick={() => handlePurchase(spare._id)}>
+                      Purchase
+                    </button>
+                  </div>
                 </div>
-                <div className="card-purchase">
-                  <p>{spare.price} KSH</p>
-                  <button onClick={() => handlePurchase(spare._id)}>
-                    Purchase
-                  </button>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
-        <div className="down-btns">
-          <Link to={"/client/orders"}>Orders</Link>
-        </div>
+
+        <button className="chatbot-toggler">
+          <span className="material-symbols-rounded">mode_comment</span>
+        </button>
       </div>
       <Footer />
     </>
