@@ -113,6 +113,8 @@ const ClientDashboard: React.FC = () => {
         </div>
         <div className="down-btns">
           <Link to={"/client/orders"}>Orders</Link>
+          <a href="www.example.com" target='_blank' rel='noreferrer' className="chatbot-btn">
+            <span className='material-symbols-outlined'> chat</span></a>
         </div>
       </div>
       <Footer />
