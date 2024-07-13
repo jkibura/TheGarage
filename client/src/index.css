@@ -406,7 +406,6 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-
 /* Client Dashboard */
 /* .service-list {
   display: grid;
@@ -459,14 +458,10 @@ body {
 
 /*Purchase page*/
 .purchase-container {
-  max-width: 60vw;
-  margin: 3rem auto;
-  padding: 20px;
-  text-align: center;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  font-size: 1.5rem;
+  width: 800px;
+  border: 1px solid #ddd;
   transition: box-shadow 0.3s ease;
+  margin-bottom: 20px;
 }
 
 .purchase-container:hover {
@@ -478,20 +473,21 @@ body {
   margin-bottom: 4rem;
 }
 
+.purchase-additional-input {
+  padding: 10px;
+}
+
+.purchase-input {
+  border: 1px solid #ddd;
+}
+
 .purchase-container div input {
   display: block;
-  width: fit-content;
-  margin: 1rem  auto 2rem;
+  max-width: 300px;
+
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-.purchase-container button {
-  margin: 3rem auto;
-  padding: 10px 20px;
-  font-size: 1.5rem;
-  font-weight: 15rem;
 }
 
 /* Worker Dashboard */

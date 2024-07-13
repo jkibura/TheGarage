@@ -67,7 +67,20 @@ const ViewOrders = () => {
                       Client: {order.clientId.username}
                     </p>
                     <p className="order-date">
-                      Date: {new Date(order.createdAt).toLocaleDateString()}
+                      Date of order:{" "}
+                      {new Date(order.createdAt).toLocaleDateString()}
+                    </p>
+                    <p className="order-date">
+                      Bring at:{" "}
+                      {new Date(order.timeOfService).toLocaleDateString()}{" "}
+                      {new Date(order.timeOfService).toLocaleTimeString()}
+                    </p>
+
+                    <p className="order-client">
+                      Number Plate: {order.numberPlate}
+                    </p>
+                    <p className="order-client">
+                      Additional Parts: {order.additionalParts}
                     </p>
                   </div>
                 </div>
