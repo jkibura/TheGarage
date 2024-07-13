@@ -52,7 +52,9 @@ export const getAllOrdersController = async (req: Request, res: Response) => {
     const orders = await Order.find()
       .populate("clientId")
       .populate("serviceId")
-      .populate("assignedWorker");
+      .populate("assignedWorker")
+      .populate("numberPlate")
+      .populate("timeOfService");
     res.status(200).json(orders);
   } catch (error) {
     res

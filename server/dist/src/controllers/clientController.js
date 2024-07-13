@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getClientsOrdersController = exports.createOrderController = exports.getAllServicesController = void 0;
+exports.getClientsOrdersController = exports.createOrderController = exports.getServiceByIdController = exports.getAllServicesController = void 0;
 const Order_1 = __importDefault(require("../models/Order"));
 const Services_1 = __importDefault(require("../models/Services"));
 const SpareParts_1 = __importDefault(require("../models/SpareParts"));
@@ -31,9 +31,25 @@ const getAllServicesController = (req, res) => __awaiter(void 0, void 0, void 0,
     }
 });
 exports.getAllServicesController = getAllServicesController;
+const getServiceByIdController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const service = yield Services_1.default.findById(req.params.serviceId);
+        if (!service) {
+            return res.status(404).json({ error: "Service not found" });
+        }
+        res.status(200).json(service);
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Server error" });
+    }
+});
+exports.getServiceByIdController = getServiceByIdController;
 const createOrderController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     const { additionalParts } = req.body;
+    const { numberPlate } = req.body;
+    const { timeOfService } = req.body;
     const { serviceId } = req.params;
     const clientId = (_a = req.user) === null || _a === void 0 ? void 0 : _a.id;
     console.log("Request body:", req.body);
@@ -44,6 +60,8 @@ const createOrderController = (req, res) => __awaiter(void 0, void 0, void 0, fu
             clientId,
             serviceId,
             additionalParts,
+            numberPlate,
+            timeOfService,
         });
         yield newOrder.save();
         res.status(201).json({
