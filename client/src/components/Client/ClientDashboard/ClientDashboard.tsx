@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import API from "../../../api/index";
 import "./ClientDashboard.css";
 import audiImage from "../../../assets/img/bmw.avif";
@@ -151,7 +151,7 @@ const ClientDashboard: React.FC = () => {
         </div>
         <div className="down-btns">
           <a
-            href="www.example.com"
+            href="https://garagechatbot.streamlit.app/"
             target="_blank"
             rel="noreferrer"
             className="chatbot-btn"
