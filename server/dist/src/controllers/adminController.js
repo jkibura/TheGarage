@@ -58,7 +58,9 @@ const getAllOrdersController = (req, res) => __awaiter(void 0, void 0, void 0, f
         const orders = yield Order_1.default.find()
             .populate("clientId")
             .populate("serviceId")
-            .populate("assignedWorker");
+            .populate("assignedWorker")
+            .populate("numberPlate")
+            .populate("timeOfService");
         res.status(200).json(orders);
     }
     catch (error) {
