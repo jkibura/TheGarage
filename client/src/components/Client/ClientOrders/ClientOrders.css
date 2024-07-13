@@ -1,8 +1,8 @@
 .order-list {
-    display: flex;
-    flex-wrap: wrap;
-    margin: auto;
-    width: 80vw;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  width: 80vw;
 }
 
 .order {
@@ -17,15 +17,15 @@
     margin-bottom: 5rem;
   }
 
-  .order-info {
-    display: flex;
-  }
+.order-info {
+  display: flex;
+}
 
-  .order-info h2 {
-    margin-right: auto;
-    color: #0056b3;
-  }
+.order-info h2 {
+  margin-right: auto;
+  color: #0056b3;
+}
 
-  .order:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
+.order:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
