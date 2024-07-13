@@ -36,7 +36,14 @@ const Home: React.FC = () => {
         <div className="aboutus-content">
           <h1 className="aboutus-h1">Welcome to FIX & FRESH AUTO!</h1>
           <p className="aboutus-p">
-            We are glad to be a leading Car Garage in Kenya. We deal in almost
+          Welcome to Fix & Fresh Auto, Kenya's Leading Car Garage.
+
+Discover automotive excellence at Fix & Fresh Auto, where luxury meets precision. We specialize in meticulous repairs, bespoke detailing, and sourcing the finest spare parts, ensuring your vehicle receives unparalleled care.
+
+Our seasoned professionals bring years of expertise to every project. Whether restoring classics or fine-tuning modern marvels, we deliver exceptional service tailored for discerning clients.
+
+Experience automotive sophistication with Fix & Fresh Auto. Contact us today to schedule your consultation and elevate your driving experience.
+            {/* We are glad to be a leading Car Garage in Kenya. We deal in almost
             every car and fulfill all your requirements for the car. Small
             things make significant changes same goes for the vehicle; if the
             small wear and tear are done timely and well-maintained, it helps
@@ -46,7 +53,7 @@ const Home: React.FC = () => {
             quality services to our valued customers. Fix & Fresh Auto has the
             best qualified and experienced auto repair technicians. They provide
             all valuable services at a reputable Car Repair, Car Wash and Spare
-            parts dealer in Kenya.
+            parts dealer in Kenya. */}
           </p>
         </div>
       </div>
