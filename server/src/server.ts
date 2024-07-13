@@ -2,34 +2,21 @@ import express, { Express, Request, Response } from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
-/* import path from "path";
-import fs from "fs";
-import mongoSanitize from "express-mongo-sanitize"; */
-/* import xss from "xss-clean"; */
-/* import { setCspHeaders } from "./middleware/securityMiddleware"; */
+
+// import mongoSanitize from "express-mongo-sanitize";
+// import xss from "xss-clean";
+// import { setCspHeaders } from "./middleware/securityMiddleware";
 import authRoutes from "./routes/authRoutes";
 import clientRoutes from "./routes/clientRoutes";
 import adminRoutes from "./routes/adminRoutes";
 import workerRoutes from "./routes/workerRoutes";
 import cors from "cors";
-/* import { limiter } from "./middleware/rateLimiter"; */
+// import { limiter } from "./middleware/rateLimiter";
 
 dotenv.config();
 
 const PORT: number = parseInt(process.env.PORT as string, 10) || 8000;
 const DATABASE_URI: string = process.env.DATABASE_URI as string;
-
-// Function to ensure the uploads directory exists
-/* const ensureUploadsDir = () => {
-  const uploadDir = path.join(__dirname, "uploads");
-
-  if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir);
-  }
-};
- */
-// Call the function to ensure uploads directory exists
-// ensureUploadsDir();
 
 const app: Express = express();
 
@@ -46,11 +33,10 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Serve static files from the 'uploads' directory
-// app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use("/uploads", express.static("uploads"));
 
-/* MIDDLEWARE FOR PARSING FORM DATA */
+// Middleware for parsing form data
 // app.use(express.urlencoded({ extended: false }));
 
 // Sanitize data against NoSQL Injection
@@ -72,7 +58,7 @@ mongoose
   .catch((err: Error) => console.log("Not Connected to database", err));
 
 // get request
-app.get("/garage", (req: Request, res: Response) => {
+app.get("/", (req: Request, res: Response) => {
   res.status(200).json({ message: "Server is running properly" });
 });
 
@@ -83,4 +69,9 @@ app.use("/api/admin", adminRoutes);
 app.use("/api/workers", workerRoutes);
 
 // Setting up our port
-app.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
+if (process.env.NODE_ENV !== "test") {
+  app.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
+}
+
+// exporting our app for tests
+export default app;

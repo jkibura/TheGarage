@@ -7,31 +7,18 @@ const express_1 = __importDefault(require("express"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
-/* import path from "path";
-import fs from "fs";
-import mongoSanitize from "express-mongo-sanitize"; */
-/* import xss from "xss-clean"; */
-/* import { setCspHeaders } from "./middleware/securityMiddleware"; */
+// import mongoSanitize from "express-mongo-sanitize";
+// import xss from "xss-clean";
+// import { setCspHeaders } from "./middleware/securityMiddleware";
 const authRoutes_1 = __importDefault(require("./routes/authRoutes"));
 const clientRoutes_1 = __importDefault(require("./routes/clientRoutes"));
 const adminRoutes_1 = __importDefault(require("./routes/adminRoutes"));
 const workerRoutes_1 = __importDefault(require("./routes/workerRoutes"));
 const cors_1 = __importDefault(require("cors"));
-/* import { limiter } from "./middleware/rateLimiter"; */
+// import { limiter } from "./middleware/rateLimiter";
 dotenv_1.default.config();
 const PORT = parseInt(process.env.PORT, 10) || 8000;
 const DATABASE_URI = process.env.DATABASE_URI;
-// Function to ensure the uploads directory exists
-/* const ensureUploadsDir = () => {
-  const uploadDir = path.join(__dirname, "uploads");
-
-  if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir);
-  }
-};
- */
-// Call the function to ensure uploads directory exists
-// ensureUploadsDir();
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)({
     credentials: true,
@@ -42,9 +29,8 @@ app.use(express_1.default.json());
 // Middleware for cookies
 app.use((0, cookie_parser_1.default)());
 // Serve static files from the 'uploads' directory
-// app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/uploads", express_1.default.static("uploads"));
-/* MIDDLEWARE FOR PARSING FORM DATA */
+// Middleware for parsing form data
 // app.use(express.urlencoded({ extended: false }));
 // Sanitize data against NoSQL Injection
 // app.use(mongoSanitize());
@@ -60,7 +46,7 @@ mongoose_1.default
     .then(() => console.log("Connected to database"))
     .catch((err) => console.log("Not Connected to database", err));
 // get request
-app.get("/garage", (req, res) => {
+app.get("/", (req, res) => {
     res.status(200).json({ message: "Server is running properly" });
 });
 // Middleware for our routes
@@ -69,4 +55,8 @@ app.use("/api/client", clientRoutes_1.default);
 app.use("/api/admin", adminRoutes_1.default);
 app.use("/api/workers", workerRoutes_1.default);
 // Setting up our port
-app.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
+if (process.env.NODE_ENV !== "test") {
+    app.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
+}
+// exporting our app for tests
+exports.default = app;

@@ -10,16 +10,6 @@ import Features from "../../components/HomeFeatures/Features";
 import SpecialOffers from "../../components/SpecialOffers/SpecialOffers";
 
 const Home: React.FC = () => {
-  /*  return (
-    <div className="home">
-      <h1 className="welcome">Welcome to the Service App</h1>
-      <div className="home-btns">
-        <Link to="/login">Login</Link>
-        <Link to="/register">Register</Link>
-      </div>
-    </div>
-  ); */
-
   return (
     <div>
       <div

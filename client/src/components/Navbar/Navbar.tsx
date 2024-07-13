@@ -24,6 +24,13 @@ const Navbar: React.FC = () => {
             className="fa-home-icon-nav"
           />
         </Link>
+        {role === "client" && (
+          <div>
+            <Link to={"/client/orders"} className="orders">
+              Orders
+            </Link>
+          </div>
+        )}
         {!isAuthenticated && (
           <Link to={"/login"} className="login">
             Login

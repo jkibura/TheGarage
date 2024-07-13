@@ -29,10 +29,7 @@ const ClientOrders: React.FC = () => {
           ))}
         </div>
       )}
-      <div className="down-btns">
-        <Link to={"/"}>Home</Link>
-        <Link to={"/client/dashboard"}>Products</Link>
-      </div>
+
     </div>
   );
 };
