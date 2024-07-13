@@ -15,6 +15,8 @@ interface Order {
   status: string;
   assignedWorker?: { username: string };
   additionalParts: string[];
+  numberPlate: string;
+  timeOfService: Date;
   createdAt: string;
 }
 

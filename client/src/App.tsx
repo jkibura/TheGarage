@@ -11,7 +11,7 @@ import NotFound from "./pages/NotFounds";
 import Login from "./components/Auth/Login/Login";
 import Register from "./components/Auth/Register/Register";
 import ClientDashboard from "./components/Client/ClientDashboard/ClientDashboard";
-import PurchaseService from "./components/Client/PurchaseService";
+import PurchaseService from "./components/Client/PurchaseService/PurchaseService";
 import AdminDashboard from "./components/Admin/DashBoard";
 import ManageOrders from "./components/Admin/ManageOrders/ManageOrders";
 import WorkerDashboard from "./components/Worker/DashBoard";
