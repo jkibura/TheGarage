@@ -23,11 +23,26 @@ export const getAllServicesController = async (req: Request, res: Response) => {
   }
 };
 
+export const getServiceByIdController = async (req: Request, res: Response) => {
+  try {
+    const service = await Service.findById(req.params.serviceId);
+    if (!service) {
+      return res.status(404).json({ error: "Service not found" });
+    }
+    res.status(200).json(service);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
 export const createOrderController = async (
   req: AuthRequest,
   res: Response
 ) => {
   const { additionalParts } = req.body;
+  const { numberPlate } = req.body;
+  const { timeOfService } = req.body;
   const { serviceId } = req.params;
   const clientId = req.user?.id;
 
@@ -40,6 +55,8 @@ export const createOrderController = async (
       clientId,
       serviceId,
       additionalParts,
+      numberPlate,
+      timeOfService,
     });
 
     await newOrder.save();
