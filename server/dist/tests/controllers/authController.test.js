@@ -16,6 +16,8 @@ const supertest_1 = __importDefault(require("supertest"));
 const server_1 = __importDefault(require("../../src/server"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const dotenv_1 = __importDefault(require("dotenv"));
+const User_1 = __importDefault(require("../../src/models/User"));
+const bcryptjs_1 = __importDefault(require("bcryptjs"));
 dotenv_1.default.config();
 const DATABASE_URI = process.env.DATABASE_URI;
 beforeAll(() => __awaiter(void 0, void 0, void 0, function* () {
@@ -25,6 +27,16 @@ beforeAll(() => __awaiter(void 0, void 0, void 0, function* () {
 afterAll(() => __awaiter(void 0, void 0, void 0, function* () {
     yield mongoose_1.default.connection.close();
     console.log("Disconnected from database");
+}));
+beforeEach(() => __awaiter(void 0, void 0, void 0, function* () {
+    // Create a user before each test
+    const hashedPassword = bcryptjs_1.default.hashSync("!Oo12345", 10);
+    yield User_1.default.create({
+        username: "oscar",
+        email: "oscar@gmail.com",
+        password: hashedPassword,
+        role: "client",
+    });
 }));
 it("allows registration of a user", () => __awaiter(void 0, void 0, void 0, function* () {
     const res = yield (0, supertest_1.default)(server_1.default).post("/api/auth/register").send({

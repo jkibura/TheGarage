@@ -5,8 +5,9 @@ interface IOrder extends Document {
   serviceId: mongoose.Types.ObjectId;
   additionalParts: string[];
   status: "pending" | "in progress" | "completed";
-
   assignedWorker?: mongoose.Types.ObjectId;
+  numberPlate: string;
+  timeOfService: Date;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -26,6 +27,14 @@ const orderSchema = new Schema<IOrder>(
     additionalParts: {
       type: [String],
       default: [],
+    },
+    numberPlate: {
+      type: String,
+      required: true,
+    },
+    timeOfService: {
+      type: Date,
+      required: true,
     },
     status: {
       type: String,
