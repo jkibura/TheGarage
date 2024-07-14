@@ -14,9 +14,10 @@
   min-width: 300px;
 }
 
-.small-details {
-  color: #ccc;
-  font-weight: lighter;
+.small-detailss {
+  color: #979797;
+  font-weight: bold;
+  margin-left: 7px;
 }
 
 /* email */

@@ -11,9 +11,10 @@
 
 .small-details {
   color: #ccc;
-  font-weight: bold;
+  font-weight: bolder;
   margin-left: 12px;
 }
+
 /* username */
 .username-input-elements {
   display: flex;

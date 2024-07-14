@@ -61,7 +61,7 @@ const Login: React.FC = () => {
     <form onSubmit={handleSubmit}>
       <div className="authenticate-users-container">
         <div className="details">
-          <h1 className="large-details">Welcome to Fix & Fresh</h1>
+          <h1 className="large-detailss">Welcome to Fix & Fresh</h1>
           <h3 className="small-details">Sign in to continue</h3>
         </div>
 

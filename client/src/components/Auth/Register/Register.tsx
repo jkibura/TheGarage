@@ -45,7 +45,7 @@ const Register: React.FC = () => {
       <div className="authenticate-users-container">
         <div>
           <h1 className="large-details">Create an account</h1>
-          <h3 className="small-details">Start your car experience with us</h3>
+          <h3 className="small-detailss">Start your car experience with us</h3>
         </div>
         <div className="username-input-container">
           <label className="input-labels">Name </label>
