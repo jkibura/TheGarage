@@ -71,4 +71,4 @@ with st.sidebar:
     st.write()
     # Add a button to navigate to the Blogging social app
 if st.button("Go to garage App"):
-    st.markdown("[Go to Blog App](https://gar-front.onrender.com/)")
+    st.markdown("[Go to garage App](https://gar-front.onrender.com/)")
