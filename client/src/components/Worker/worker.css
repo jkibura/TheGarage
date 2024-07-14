@@ -11,6 +11,7 @@
     padding: 1rem;
     transition: box-shadow 0.3s ease;
     flex: 0 0 auto;
+    background-color: #fff;
     min-width: 25rem;
 }
 
