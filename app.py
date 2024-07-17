@@ -1,5 +1,5 @@
 #set up python environment
-#web ,API , data manipulation ,interaction
+#web ,API , data manipulation ,interaction(visualisation)
 import streamlit as st
 import google.generativeai as genai
 import pandas as pd
@@ -26,7 +26,7 @@ def get_gemini_response(prompt):
 #service feature
 #parameter(dt,ud)   
 def generate_service_chart(data_type, user_data=None):
-#nested functions
+#nested logical conditiions
     if data_type == "Popular Services":
         if user_data:
             df = pd.DataFrame(user_data)
